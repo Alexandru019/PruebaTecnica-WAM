@@ -18,4 +18,5 @@ Por último, tiene que poderse descargar el listado en formato json.<br><br>
   <p>Con la información cargada, separamos la información en filas y tratamos las filas para añadirlas a un array asociativo con el nombre de los campos</p>
   <p>Se envía a la vista <b>Home</b> un array con los nombres de los campos a mostrar y el array con los datos tratados</p>
   <p>En la vista se hace uso de la librería <b>DataTables</b> para mostrar los datos</p>
+  <p>Para descargar las reservas, se han creado 2 botones. El primero descargar todas las reservas, el segundo solo descarga las filas filtradas</p>
 </ul>
