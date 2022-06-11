@@ -24,6 +24,10 @@
 				Reservas
 			</header>
 			<div class="card-body">
+
+				<button class="btn btn-info mt-3 mb-4 text-white" id="downloadAllBookings">Descargar Todas las Reservas</button>
+				<button class="btn btn-secondary mt-3 mb-4 text-white" id="downloadSearchedBookings">Descargar Búsqueda</button>
+
 				<table class="table table-striped table-hover datatable" id="bookingsTable">
 					<thead>
 						<tr>
@@ -73,7 +77,7 @@
 				$(this).html('<input type="text" placeholder="' + title + '" />');
 			});
 
-			$('#bookingsTable').DataTable({
+			var bookingsTable = $('#bookingsTable').DataTable({
 				initComplete: function() {
 
 					this.api().columns().every(function() {
@@ -91,6 +95,50 @@
 					});
 				},
 			});
+
+
+			$('#downloadAllBookings').click(function() {
+				downloadContent();
+			});
+
+			$('#downloadSearchedBookings').click(function() {
+				downloadContent(true);
+			});
+
+			function downloadContent(search = false) {
+				var fields = <?= json_encode($fields) ?>;
+
+				let values = [];
+				if (search) {
+					values = bookingsTable.rows({
+						search: 'applied'
+					}).data().toArray();
+				} else {
+					values = bookingsTable.rows().data().toArray();
+				}
+
+				var dataToExport = {
+					fields: fields,
+					values: values
+				};
+
+				dataToExport = JSON.stringify(dataToExport);
+
+				var blob = new Blob([dataToExport], {
+					type: "application/json"
+				})
+				var url = URL.createObjectURL(blob);
+
+				var a = document.createElement('a');
+				a.href = url;
+				a.download = "Bookings.json";
+
+				$(a).appendTo('body');
+				a.click();
+				$(a).remove();
+			}
+
+
 		});
 	</script>
 
