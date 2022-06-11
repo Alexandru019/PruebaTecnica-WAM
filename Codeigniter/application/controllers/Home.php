@@ -27,7 +27,27 @@ class Home extends CI_Controller
 
 		$result = curlRequest($url);
 
+		$fields = array(
+			'Localizador', 'Huésped', 'Fecha de entrada',
+			'Fecha de salida', 'Hotel', 'Precio', 'Posibles Acciones'
+		);
 
-		$this->load->view('home');
+		$bookings = array();
+		$rows = preg_split('/\r\n|\r|\n/', $result);
+		foreach ($rows as $position => $row) {
+			if (!empty($row)) {
+				$row = explode(';', $row);
+				foreach ($row as $key => $value) {
+					$bookings[$position][$fields[$key]] = trim($value);
+				}
+			}
+		}
+
+		$view_data = array(
+			'bookings' => $bookings,
+			'fields' => $fields,
+		);
+
+		$this->load->view('home', $view_data);
 	}
 }
