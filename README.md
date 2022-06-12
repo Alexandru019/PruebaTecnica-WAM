@@ -1,5 +1,5 @@
 # PruebaTecnica-WAM
-<h3>Descripcíon</h3><br>
+<h3>Descripción</h3><br>
 Desarrolla una aplicación que obtenga de un servidor externo un listado de reservas realizadas en
 formato CSV. La aplicación tiene que mostrar el listado de las reservas y permitir buscar por un texto libre que
 pueda aparecer en los campos del listado.
