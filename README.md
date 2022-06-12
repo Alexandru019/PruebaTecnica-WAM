@@ -19,4 +19,14 @@ Por último, tiene que poderse descargar el listado en formato json.<br><br>
   <p>Se envía a la vista <b>Home</b> un array con los nombres de los campos a mostrar y el array con los datos tratados</p>
   <p>En la vista se hace uso de la librería <b>DataTables</b> para mostrar los datos</p>
   <p>Para descargar las reservas, se han creado 2 botones. El primero descargar todas las reservas, el segundo solo descarga las filas filtradas</p>
+  
+  <li><b>Symfony</b></li>
+  <p>Esta solución es adicional ya que se solicitaba, si era posible, resolver la prueba con Symfony 4.4</p>
+  <h4>Explicación</h4>
+  <p>Se hace uso del controlador <b>HomeController</b> y de la vista <b>home.html.twig</b>, en cuanto a la lógica es similar al proyecto con Codeigniter</p>
+  <p>Las diferencias con CodeIgniter son</p>
+  <ul>
+    <li>La arquitectura del proyecto</li>
+    <li>El uso de las variables en las vistas</li>
+  </ul>  
 </ul>
